@@ -10,4 +10,6 @@ public class LoginRequest {
         this.email = userName;
         this.password = password;
     }
+
+
 }
