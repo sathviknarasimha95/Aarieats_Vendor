@@ -28,8 +28,6 @@ public class ProductsViewModel extends ViewModel {
     private void loadProducts() {
         ApiService apiService = ApiService.getInstance();
         apiService.getProducts(UserInfo.getInstance().getVendorInfo().getEmail(), new ProductListner() {
-
-
             @Override
             public void onSuccess(HttpListner.ResponseStatus status, List<Products> info) {
                mProducts.postValue(info);

@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.onesignal.OneSignal;
+
 public class MainActivity extends AppCompatActivity implements LoginFragment.OnFragmentInteractionListener,RegisterationFragment.OnFragmentInteractionListener,MapRegFragment.OnFragmentInteractionListener{
     public static final int PERMISSION_REQUEST_LOCATION_CODE = 99;
     @Override
@@ -21,11 +23,15 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnF
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
+        createOneSignal();
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    private void createOneSignal() {
     }
 
     @Override

@@ -3,17 +3,26 @@ package com.example.aarieats.http.api;
 import android.util.Log;
 
 import com.example.aarieats.http.AddProductListner;
+import com.example.aarieats.http.GetOrderDetailsListner;
+import com.example.aarieats.http.GetOrderListner;
 import com.example.aarieats.http.HttpListner;
 import com.example.aarieats.http.ProductListner;
 import com.example.aarieats.http.ServiceGenerator;
+import com.example.aarieats.http.UpdateOrderListner;
 import com.example.aarieats.http.models.AddProductResponse;
 import com.example.aarieats.http.models.AddProductsRequest;
+import com.example.aarieats.http.models.GetOrderDetailsRequest;
+import com.example.aarieats.http.models.GetOrderDetailsResponse;
+import com.example.aarieats.http.models.GetOrderRequest;
+import com.example.aarieats.http.models.GetOrderResponse;
 import com.example.aarieats.http.models.GetProductRequest;
 import com.example.aarieats.http.models.GetProductResponse;
 import com.example.aarieats.http.models.LoginRequest;
 import com.example.aarieats.http.models.LoginResponse;
 import com.example.aarieats.http.models.RegisterRequest;
 import com.example.aarieats.http.models.RegisterResponse;
+import com.example.aarieats.http.models.UpdateOrderRequest;
+import com.example.aarieats.http.models.UpdateOrderResponse;
 import com.example.aarieats.models.singletons.UserInfo;
 
 import retrofit2.Call;
@@ -114,6 +123,73 @@ public class ApiService {
             @Override
             public void onFailure(Call<AddProductResponse> call, Throwable t) {
                 addProductListner.onFailure(AddProductListner.ResponseStatus.FAILURE,t.getMessage());
+            }
+        });
+    }
+
+    public void getOrders(final GetOrderListner getOrderListner) {
+        String email = UserInfo.getInstance().getVendorInfo().getEmail();
+        GetOrderRequest getOrderRequest = new GetOrderRequest(email);
+        AariEatsApi aariEatsApi = ServiceGenerator.createRetrofit(AariEatsApi.class);
+        Call<GetOrderResponse> getOrderCall = aariEatsApi.getOrders(getOrderRequest);
+        getOrderCall.enqueue(new Callback<GetOrderResponse>() {
+            @Override
+            public void onResponse(Call<GetOrderResponse> call, Response<GetOrderResponse> response) {
+                if(response.code() == 200) {
+                    getOrderListner.onSuccess(GetOrderListner.ResponseStatus.SUCCESS,response.body().getData());
+                } else {
+                    getOrderListner.onFailure(GetOrderListner.ResponseStatus.INVALID_PARAMETERS,"Invalid Parameter");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetOrderResponse> call, Throwable t) {
+                getOrderListner.onFailure(GetOrderListner.ResponseStatus.FAILURE,t.getMessage());
+            }
+        });
+    }
+
+    public void getOrderDetails(String orderId, String email, final GetOrderDetailsListner getOrderDetailsListner) {
+        GetOrderDetailsRequest getOrderDetailsRequest = new GetOrderDetailsRequest(orderId,email);
+
+        AariEatsApi aariEatsApi = ServiceGenerator.createRetrofit(AariEatsApi.class);
+        Call<GetOrderDetailsResponse> getOrderDetailsCall = aariEatsApi.getOrderDetails(getOrderDetailsRequest);
+
+        getOrderDetailsCall.enqueue(new Callback<GetOrderDetailsResponse>() {
+            @Override
+            public void onResponse(Call<GetOrderDetailsResponse> call, Response<GetOrderDetailsResponse> response) {
+                if(response.code() == 200) {
+                    getOrderDetailsListner.onSuccess(GetOrderDetailsListner.ResponseStatus.SUCCESS,response.body().getData());
+                } else {
+                    getOrderDetailsListner.onFailure(GetOrderDetailsListner.ResponseStatus.INVALID_PARAMETERS,"Invalid Parameter");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetOrderDetailsResponse> call, Throwable t) {
+                getOrderDetailsListner.onFailure(GetOrderDetailsListner.ResponseStatus.FAILURE,t.getMessage());
+            }
+        });
+    }
+
+    public void updateOrder(String orderId, int statusCode, final UpdateOrderListner updateOrderListner) {
+        UpdateOrderRequest updateOrderRequest = new UpdateOrderRequest(orderId,statusCode);
+        AariEatsApi aariEatsApi = ServiceGenerator.createRetrofit(AariEatsApi.class);
+        Call<UpdateOrderResponse> updateOrderCall = aariEatsApi.updateOrder(updateOrderRequest);
+
+        updateOrderCall.enqueue(new Callback<UpdateOrderResponse>() {
+            @Override
+            public void onResponse(Call<UpdateOrderResponse> call, Response<UpdateOrderResponse> response) {
+                if(response.code() == 200) {
+                    updateOrderListner.onSuccess(UpdateOrderListner.ResponseStatus.SUCCESS,"success");
+                } else {
+                    updateOrderListner.onFailure(UpdateOrderListner.ResponseStatus.INVALID_PARAMETERS,"Invalid Parameter");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateOrderResponse> call, Throwable t) {
+                updateOrderListner.onFailure(UpdateOrderListner.ResponseStatus.FAILURE,t.getMessage());
             }
         });
     }

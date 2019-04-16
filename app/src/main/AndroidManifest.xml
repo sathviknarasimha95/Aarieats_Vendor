@@ -20,9 +20,12 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".BaseApplication"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddprouctsActivity"></activity>
+        <activity android:name=".OrderDetailsActivity"></activity>
+        <activity android:name=".VieworderActivity" />
+        <activity android:name=".AddprouctsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
