@@ -8,6 +8,8 @@ public class OrderDetails {
 
     private String ProductName;
 
+    private String ProductPrice;
+
 
     public String getOrderId() {
         return OrderId;
@@ -31,5 +33,13 @@ public class OrderDetails {
 
     public void setProductName(String productName) {
         ProductName = productName;
+    }
+
+    public void setProductPrice(String productPrice) {
+        ProductPrice = productPrice;
+    }
+
+    public int getProductPrice() {
+        return Integer.parseInt(ProductPrice);
     }
 }

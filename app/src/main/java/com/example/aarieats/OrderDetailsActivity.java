@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.aarieats.http.GetOrderDetailsListner;
@@ -43,6 +44,12 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
     private Button mDeclineBtn;
 
+    private Button mTrackBtn;
+
+    private String mUserLatLng;
+
+    private TextView mTotalText;
+
     private AlertDialog.Builder alertDialog;
 
 
@@ -54,15 +61,23 @@ public class OrderDetailsActivity extends AppCompatActivity {
         if(mExtras!=null) {
             mOrderId = mExtras.getString("orderId");
             mOrderStatus = mExtras.getInt("orderStatus");
+            mUserLatLng = mExtras.getString("userLatLng");
         }
         mUpdateBtn = findViewById(R.id.updateBtn);
         mDeclineBtn = findViewById(R.id.declineBtn);
+        mTrackBtn = findViewById(R.id.trackBtn);
+        mTotalText = findViewById(R.id.priceText);
+
         if(mOrderStatus!=4) {
             mDeclineBtn.setVisibility(View.GONE);
         }
         if(mOrderStatus == 0) {
             mUpdateBtn.setVisibility(View.GONE);
             mDeclineBtn.setVisibility(View.GONE);
+        }
+
+        if(mUserLatLng==null) {
+            mTrackBtn.setVisibility(View.GONE);
         }
         handleBtns();
         mOrderDetailsListView = findViewById(R.id.orderDetailsListView);
@@ -72,8 +87,25 @@ public class OrderDetailsActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<OrderDetails> orderDetails) {
                 mAdapter = new ArrayAdapter<String>(OrderDetailsActivity.this,android.R.layout.simple_list_item_1, android.R.id.text1,getOrderDetailsList(orderDetails));
                 mOrderDetailsListView.setAdapter(mAdapter);
+                displayTotal(orderDetails);
             }
         });
+        mTrackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderDetailsActivity.this,TrackActivity.class);
+                intent.putExtra("userLocationLatLng",mUserLatLng);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void displayTotal(List<OrderDetails> orderDetails) {
+        int total = 0;
+        for(OrderDetails orderDetail : orderDetails) {
+            total = total + orderDetail.getProductPrice();
+        }
+        mTotalText.setText("Total :"+total);
     }
 
     private void handleBtns() {

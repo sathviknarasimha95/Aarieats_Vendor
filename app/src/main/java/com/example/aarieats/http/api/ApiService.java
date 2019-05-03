@@ -48,7 +48,10 @@ public class ApiService {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.i("apiservice",response.code()+"");
                 if(response.code() == 200) {
-                    httpListner.onSuccess(HttpListner.ResponseStatus.LOGIN_SUCCESS, "sussess");
+                    LoginResponse loginResponse = response.body();
+                    LoginResponse.Data data = loginResponse.getData();
+                    String latLng = data.getVendorLat()+":"+data.getVendorLng();
+                    httpListner.onSuccess(HttpListner.ResponseStatus.LOGIN_SUCCESS, latLng);
                 } else if(response.code() == 204) {
                     httpListner.onSuccess(HttpListner.ResponseStatus.LOGIN_AUTHENTICATION_FAILURE, "Authentication failure");
                 }

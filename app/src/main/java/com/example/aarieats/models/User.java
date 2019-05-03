@@ -4,10 +4,12 @@ public class User {
 
     private String mEmail;
     private String mUserName;
+    private String mLatLng;
 
-    public User(String email,String userName) {
+    public User(String email,String userName,String latLng) {
         this.mEmail = email;
         this.mUserName = userName;
+        this.mLatLng = latLng;
     }
 
     public String getEmail() {
@@ -18,6 +20,9 @@ public class User {
         return mUserName;
     }
 
+    public String getLatLng() {
+        return mLatLng;
+    }
 
 
 }

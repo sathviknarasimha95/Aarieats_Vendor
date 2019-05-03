@@ -117,7 +117,7 @@ public class LoginFragment extends Fragment {
                 public void onSuccess(ResponseStatus status, String info) {
                     if(status == ResponseStatus.LOGIN_SUCCESS) {
                         Toast.makeText(getActivity(),"LoginSuccess",Toast.LENGTH_SHORT).show();
-                        UserInfo.getInstance().setVendorInfo(username.getText().toString(),username.getText().toString());
+                        UserInfo.getInstance().setVendorInfo(username.getText().toString(),username.getText().toString(),info);
                         mListener.goToHome();
                     } else {
                         Toast.makeText(getActivity(),"Login Failure",Toast.LENGTH_SHORT).show();

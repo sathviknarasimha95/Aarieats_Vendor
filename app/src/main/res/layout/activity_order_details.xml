@@ -10,12 +10,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/orderDetailsListView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/orderDetailsListView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/priceText"
+        android:text="Total :"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/updateBtn"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/orderDetailsListView"
+        android:layout_below="@id/priceText"
         android:layout_marginTop="10dp"/>
     <Button
         android:layout_width="wrap_content"
@@ -25,4 +34,12 @@
         android:layout_below="@id/updateBtn"
         android:layout_marginTop="10dp"
         android:text="Decline"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trackBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/declineBtn"
+        android:layout_marginTop="10dp"
+        android:text="Track"/>
 </RelativeLayout>

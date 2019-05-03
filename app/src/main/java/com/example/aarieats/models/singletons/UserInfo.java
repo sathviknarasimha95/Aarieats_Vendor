@@ -14,8 +14,8 @@ public class UserInfo {
     private UserInfo() {
     }
 
-    public void setVendorInfo(String userName,String email) {
-        User user = new User(email,userName);
+    public void setVendorInfo(String userName,String email,String latLng) {
+        User user = new User(email,userName,latLng);
         this.vendorInfo = user;
     }
 

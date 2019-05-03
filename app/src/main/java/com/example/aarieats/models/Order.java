@@ -14,13 +14,16 @@ public class Order {
 
     private String OrderStatus;
 
-    public Order(String mOrderId, String mUserId, String mUserEmail, String mVendorId, String mVendorEmail,String mOrderStatus) {
+    private String UserLatLng;
+
+    public Order(String mOrderId, String mUserId, String mUserEmail, String mVendorId, String mVendorEmail,String mOrderStatus,String mOrderLatLng) {
         this.OrderId = mOrderId;
         this.UserId = mUserId;
         this.UserEmail = mUserEmail;
         this.VendorId = mVendorId;
         this.VendorEmail = mVendorEmail;
         this.OrderStatus = mOrderStatus;
+        this.UserLatLng = mOrderLatLng;
     }
 
     public String getOrderId() {
@@ -65,6 +68,14 @@ public class Order {
 
     public String getOrderStatus() {
         return OrderStatus;
+    }
+
+    public String getUserLatLng() {
+        return UserLatLng;
+    }
+
+    public void setUserLatLng(String ordLatLng) {
+        UserLatLng = ordLatLng;
     }
 
     public void setOrderStatus(String orderStatus) {

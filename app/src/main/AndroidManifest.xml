@@ -14,16 +14,17 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_SERVICES" />
 
     <application
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".BaseApplication"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".OrderDetailsActivity"></activity>
+        <activity android:name=".TrackActivity"></activity>
+        <activity android:name=".OrderDetailsActivity" />
         <activity android:name=".VieworderActivity" />
         <activity android:name=".AddprouctsActivity" />
         <!--

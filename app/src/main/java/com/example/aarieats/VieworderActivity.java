@@ -72,6 +72,11 @@ public class VieworderActivity extends AppCompatActivity {
         Intent intent = new Intent(VieworderActivity.this,OrderDetailsActivity.class);
         intent.putExtra("orderId",order.getOrderId());
         intent.putExtra("orderStatus",status);
+        if(order.getOrderStatus()!=null) {
+            intent.putExtra("userLatLng", order.getUserLatLng());
+        } else {
+            intent.putExtra("userLatLng","null");
+        }
         startActivity(intent);
     }
 
