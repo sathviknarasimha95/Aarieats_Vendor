@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnF
     @Override
     public void goToHome() {
         startActivity(new Intent(MainActivity.this,HomeActivity.class));
+        finish();
     }
 
     @Override

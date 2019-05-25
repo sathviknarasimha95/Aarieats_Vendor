@@ -16,7 +16,17 @@ public class Order {
 
     private String UserLatLng;
 
-    public Order(String mOrderId, String mUserId, String mUserEmail, String mVendorId, String mVendorEmail,String mOrderStatus,String mOrderLatLng) {
+    private String PaymentType;
+
+    public String getPaymentType() {
+        return PaymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        PaymentType = paymentType;
+    }
+
+    public Order(String mOrderId, String mUserId, String mUserEmail, String mVendorId, String mVendorEmail, String mOrderStatus, String mOrderLatLng, String paymentType) {
         this.OrderId = mOrderId;
         this.UserId = mUserId;
         this.UserEmail = mUserEmail;
@@ -24,6 +34,7 @@ public class Order {
         this.VendorEmail = mVendorEmail;
         this.OrderStatus = mOrderStatus;
         this.UserLatLng = mOrderLatLng;
+        this.PaymentType = paymentType;
     }
 
     public String getOrderId() {

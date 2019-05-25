@@ -39,6 +39,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         TextView orderId = convertView.findViewById(R.id.orderIdValue);
         TextView userEmail = convertView.findViewById(R.id.userEmailValue);
         TextView orderStatus = convertView.findViewById(R.id.userOrderStatus);
+        TextView payment = convertView.findViewById(R.id.orderPaymentType);
 
         final Order order = mData.get(position);
 
@@ -46,6 +47,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
             orderId.setText(order.getOrderId());
             userEmail.setText(order.getUserEmail());
             orderStatus.setText(order.getOrderStatus());
+            payment.setText(order.getPaymentType());
         }
 
         convertView.setOnClickListener(new View.OnClickListener() {

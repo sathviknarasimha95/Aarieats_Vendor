@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.aarieats.http.HttpListner;
 import com.example.aarieats.http.ProductListner;
@@ -35,7 +36,7 @@ public class ProductsViewModel extends ViewModel {
 
             @Override
             public void onFailure(HttpListner.ResponseStatus status, String info) {
-
+                Log.i("ProductViewModel","NetworkFailure");
             }
         });
     }

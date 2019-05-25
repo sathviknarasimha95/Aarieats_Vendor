@@ -28,8 +28,6 @@ import java.util.List;
 
 public class OrderDetailsActivity extends AppCompatActivity {
 
-    private Bundle mExtras;
-
     private String mOrderId;
 
     private int mOrderStatus = 0;
@@ -57,8 +55,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details);
-        mExtras = getIntent().getExtras();
-        if(mExtras!=null) {
+        Bundle mExtras = getIntent().getExtras();
+        if(mExtras !=null) {
             mOrderId = mExtras.getString("orderId");
             mOrderStatus = mExtras.getInt("orderStatus");
             mUserLatLng = mExtras.getString("userLatLng");

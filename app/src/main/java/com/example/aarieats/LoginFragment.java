@@ -119,8 +119,8 @@ public class LoginFragment extends Fragment {
                         Toast.makeText(getActivity(),"LoginSuccess",Toast.LENGTH_SHORT).show();
                         UserInfo.getInstance().setVendorInfo(username.getText().toString(),username.getText().toString(),info);
                         mListener.goToHome();
-                    } else {
-                        Toast.makeText(getActivity(),"Login Failure",Toast.LENGTH_SHORT).show();
+                    } else if(status == ResponseStatus.LOGIN_AUTHENTICATION_FAILURE) {
+                        Toast.makeText(getActivity(),"Invalid UserName or password",Toast.LENGTH_SHORT).show();
                     }
                 }
 

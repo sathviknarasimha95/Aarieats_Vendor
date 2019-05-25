@@ -54,6 +54,8 @@ public class ApiService {
                     httpListner.onSuccess(HttpListner.ResponseStatus.LOGIN_SUCCESS, latLng);
                 } else if(response.code() == 204) {
                     httpListner.onSuccess(HttpListner.ResponseStatus.LOGIN_AUTHENTICATION_FAILURE, "Authentication failure");
+                } else if(response.code() == 401) {
+                    httpListner.onSuccess(HttpListner.ResponseStatus.LOGIN_AUTHENTICATION_FAILURE, "Authentication failure");
                 }
             }
 

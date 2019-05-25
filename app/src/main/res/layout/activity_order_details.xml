@@ -5,41 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrderDetailsActivity">
-
     <ListView
-        android:layout_width="match_parent"
+        android:id="@+id/orderDetailsListView"
         android:layout_height="wrap_content"
-        android:id="@+id/orderDetailsListView" />
+        android:layout_above="@+id/priceText"
+        android:layout_width="match_parent"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_below="@+id/orderDetailsListView"
+        android:layout_above="@+id/updateBtn"
         android:layout_centerHorizontal="true"
         android:id="@+id/priceText"
         android:text="Total :"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/updateBtn"
+        android:layout_margin="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/priceText"
-        android:layout_marginTop="10dp"/>
+        android:layout_above="@id/declineBtn" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/declineBtn"
+        android:layout_margin="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/updateBtn"
-        android:layout_marginTop="10dp"
+        android:layout_above="@id/trackBtn"
         android:text="Decline"/>
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/trackBtn"
+        android:layout_marginBottom="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/declineBtn"
-        android:layout_marginTop="10dp"
         android:text="Track"/>
 </RelativeLayout>
