@@ -10,6 +10,15 @@ public class OrderDetails {
 
     private String ProductPrice;
 
+    private String Units;
+
+    public String getUnits() {
+        return Units;
+    }
+
+    public void setUnits(String units) {
+        Units = units;
+    }
 
     public String getOrderId() {
         return OrderId;

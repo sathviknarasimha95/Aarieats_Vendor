@@ -43,4 +43,10 @@ public interface AariEatsApi {
     @POST("/updateOrder")
     Call<UpdateOrderResponse> updateOrder(@Body UpdateOrderRequest updateOrderRequest);
 
+    @POST("/getorderhistoryvendor")
+    Call<GetOrderResponse> getOrderHistory(@Body GetOrderRequest getOrderRequest);
+
+    @POST("/getpaymenthistory")
+    Call<GetOrderResponse> getPaymentHistory(@Body GetOrderRequest getOrderRequest);
+
 }

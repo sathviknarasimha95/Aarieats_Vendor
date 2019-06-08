@@ -8,6 +8,7 @@
     <ListView
         android:id="@+id/orderDetailsListView"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_above="@+id/priceText"
         android:layout_width="match_parent"/>
     <TextView

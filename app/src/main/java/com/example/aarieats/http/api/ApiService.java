@@ -154,6 +154,50 @@ public class ApiService {
         });
     }
 
+    public void getOrderHistory(final GetOrderListner getOrderListner) {
+        String email = UserInfo.getInstance().getVendorInfo().getEmail();
+        GetOrderRequest getOrderRequest = new GetOrderRequest(email);
+        AariEatsApi aariEatsApi = ServiceGenerator.createRetrofit(AariEatsApi.class);
+        Call<GetOrderResponse> getOrderCall = aariEatsApi.getOrderHistory(getOrderRequest);
+        getOrderCall.enqueue(new Callback<GetOrderResponse>() {
+            @Override
+            public void onResponse(Call<GetOrderResponse> call, Response<GetOrderResponse> response) {
+                if(response.code() == 200) {
+                    getOrderListner.onSuccess(GetOrderListner.ResponseStatus.SUCCESS,response.body().getData());
+                } else {
+                    getOrderListner.onFailure(GetOrderListner.ResponseStatus.INVALID_PARAMETERS,"Invalid Parameter");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetOrderResponse> call, Throwable t) {
+                getOrderListner.onFailure(GetOrderListner.ResponseStatus.FAILURE,t.getMessage());
+            }
+        });
+    }
+
+    public void getPaymentHistory(final GetOrderListner getOrderListner) {
+        String email = UserInfo.getInstance().getVendorInfo().getEmail();
+        GetOrderRequest getOrderRequest = new GetOrderRequest(email);
+        AariEatsApi aariEatsApi = ServiceGenerator.createRetrofit(AariEatsApi.class);
+        Call<GetOrderResponse> getOrderCall = aariEatsApi.getPaymentHistory(getOrderRequest);
+        getOrderCall.enqueue(new Callback<GetOrderResponse>() {
+            @Override
+            public void onResponse(Call<GetOrderResponse> call, Response<GetOrderResponse> response) {
+                if(response.code() == 200) {
+                    getOrderListner.onSuccess(GetOrderListner.ResponseStatus.SUCCESS,response.body().getData());
+                } else {
+                    getOrderListner.onFailure(GetOrderListner.ResponseStatus.INVALID_PARAMETERS,"Invalid Parameter");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetOrderResponse> call, Throwable t) {
+                getOrderListner.onFailure(GetOrderListner.ResponseStatus.FAILURE,t.getMessage());
+            }
+        });
+    }
+
     public void getOrderDetails(String orderId, String email, final GetOrderDetailsListner getOrderDetailsListner) {
         GetOrderDetailsRequest getOrderDetailsRequest = new GetOrderDetailsRequest(orderId,email);
 

@@ -57,7 +57,7 @@
                 android:textSize="14sp"
                 android:id="@+id/textOrderStatus"
                 android:layout_toEndOf="@id/orderImg"
-                android:layout_margin="10dp"
+                android:layout_margin="20dp"
                 android:text="Status:"
                 android:textStyle="bold"/>
             <TextView
@@ -67,7 +67,7 @@
                 android:layout_below="@+id/textUserEmail"
                 android:textSize="14sp"
                 android:id="@+id/userOrderStatus"
-                android:layout_margin="10dp"/>
+                android:layout_margin="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"

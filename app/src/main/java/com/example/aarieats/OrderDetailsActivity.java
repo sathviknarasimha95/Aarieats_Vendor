@@ -214,7 +214,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     private List<String> getOrderDetailsList(List<OrderDetails> orderDetails) {
         List<String> orderDetailList = new ArrayList<>();
         for(OrderDetails orderDetail : orderDetails) {
-            orderDetailList.add(orderDetail.getProductName());
+            orderDetailList.add(orderDetail.getProductName()+ "  x"+orderDetail.getUnits());
         }
         return orderDetailList;
     }
