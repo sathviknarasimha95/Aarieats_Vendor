@@ -39,6 +39,7 @@ public class ViewOrdersViewModel extends ViewModel {
     }
 
     public void setOrders(List<Order> orders) {
+
         this.mOrders.postValue(orders);
     }
 

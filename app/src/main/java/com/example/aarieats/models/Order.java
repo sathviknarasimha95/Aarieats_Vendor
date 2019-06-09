@@ -1,6 +1,6 @@
 package com.example.aarieats.models;
 
-public class Order {
+public class Order implements Comparable<Order>{
 
     private String OrderId;
 
@@ -91,5 +91,10 @@ public class Order {
 
     public void setOrderStatus(String orderStatus) {
         OrderStatus = orderStatus;
+    }
+
+    @Override
+    public int compareTo(Order o) {
+
     }
 }

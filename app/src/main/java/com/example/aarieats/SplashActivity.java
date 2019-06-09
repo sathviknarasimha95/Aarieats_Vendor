@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                Thread.sleep(1000*5);
+                Thread.sleep(1000*3);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
